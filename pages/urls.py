@@ -1,9 +1,11 @@
+# pages/urls.py
 from django.urls import path
-from .views import HomeView, MenuView, ServiciosView, ContactoView
+from .views import HomeView, MenuView, AboutView, ContactView, ServicesView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('menu/', MenuView.as_view(), name='menu'),
-    path('servicios/', ServiciosView.as_view(), name='servicios'),
-    path('contacto/', ContactoView.as_view(), name='contacto'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    path('services/', ServicesView.as_view(), name='services'),
 ]

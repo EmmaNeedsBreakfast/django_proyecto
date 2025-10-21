@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">⚠️ Confirmar Eliminación</h2>
+                </div>
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-exclamation-triangle fa-3x text-danger"></i>
+                    </div>
+                    
+                    <p class="lead">¿Estás seguro de que quieres eliminar este pedido?</p>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Pedido #{{ object.id }}</strong><br>
+                        Cliente: {{ object.customer_name }}<br>
+                        Total: Bs. {{ object.total_amount }}<br>
+                        Estado: {{ object.get_status_display }}
+                    </div>
+                    
+                    <p class="text-muted">
+                        <small>
+                            Esta acción eliminará permanentemente el pedido y todos sus items.<br>
+                            <strong>Esta acción no se puede deshacer.</strong>
+                        </small>
+                    </p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                🗑️ Sí, Eliminar Pedido
+                            </button>
+                            <a href="{% url 'orders:order_list' %}" class="btn btn-secondary btn-lg">
+                                ❌ Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

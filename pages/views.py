@@ -1,5 +1,6 @@
-from django.shortcuts import render
+# pages/views.py
 from django.views.generic import TemplateView
+from products.models import Product, Category
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -7,8 +8,11 @@ class HomeView(TemplateView):
 class MenuView(TemplateView):
     template_name = 'menu.html'
 
-class ServiciosView(TemplateView):
-    template_name = 'servicios.html'
+class AboutView(TemplateView):
+    template_name = 'about.html'
 
-class ContactoView(TemplateView):
-    template_name = 'contacto.html'
+class ContactView(TemplateView):
+    template_name = 'contact.html'
+
+class ServicesView(TemplateView):
+    template_name = 'services.html'

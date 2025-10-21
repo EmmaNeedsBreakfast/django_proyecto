@@ -21,60 +21,43 @@
     <p class="section-subtitle">Selecciones gourmet para compartir momentos especiales</p>
     
     <div class="products-grid">
+        {% for product in tablitas %}
+        <div class="product-card">
+            <div class="product-image">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                {% else %}
+                    🍇  <!-- Emoji por defecto si no hay imagen -->
+                {% endif %}
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <p class="product-description">
+                    {{ product.description|truncatewords:30 }}
+                </p>
+                <p class="product-price" style="font-weight: bold; color: var(--primary-color);">
+                    Bs. {{ product.price }}
+                </p>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20el%20producto%3A%20{{ product.name|urlencode }}%20por%20Bs.{{ product.price }}%20del%20menú" 
+                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
         <div class="product-card">
             <div class="product-image">🍇</div>
             <div class="product-info">
                 <h3 class="product-title">Tablita Grande Familiar</h3>
                 <p class="product-description">
-                    <strong>Incluye:</strong> 4 tipos de quesos artesanales, 3 embutidos premium, 
-                    frutas de temporada, frutos secos tostados, miel de abeja natural, 
-                    panes artesanales y aceitunas marinadas.
+                    Próximamente disponibles. Estamos preparando nuestros productos artesanales.
                 </p>
                 <p class="product-price">Ideal para 8-12 personas</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20la%20Tablita%20Grande%20Familiar" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
             </div>
         </div>
-
-        <div class="product-card">
-            <div class="product-image">🧀</div>
-            <div class="product-info">
-                <h3 class="product-title">Tablita Mediana Clásica</h3>
-                <p class="product-description">
-                    <strong>Incluye:</strong> 3 quesos seleccionados, 2 embutidos gourmet, 
-                    uvas y manzanas, nueces y almendras, mermelada artesanal y crackers integrales.
-                </p>
-                <p class="product-price">Ideal para 4-6 personas</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20la%20Tablita%20Mediana%20Clásica" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">🥖</div>
-            <div class="product-info">
-                <h3 class="product-title">Tablita Individual Romántica</h3>
-                <p class="product-description">
-                    <strong>Incluye:</strong> 2 quesos especiales, jamón serrano, frutas frescas, 
-                    pan baguette artesanal y un toque de miel. Perfecta para una cena especial.
-                </p>
-                <p class="product-price">Ideal para 1-2 personas</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20la%20Tablita%20Individual%20Romántica" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
 
@@ -84,59 +67,43 @@
     <p class="section-subtitle">Preparados al momento con pan recién horneado</p>
     
     <div class="products-grid">
+        {% for product in paninis %}
         <div class="product-card">
-            <div class="product-image">🫒</div>
+            <div class="product-image">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                {% else %}
+                    🥖  <!-- Emoji por defecto -->
+                {% endif %}
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <p class="product-description">
+                    {{ product.description|truncatewords:30 }}
+                </p>
+                <p class="product-price" style="font-weight: bold; color: var(--primary-color);">
+                    Bs. {{ product.price }}
+                </p>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20el%20producto%3A%20{{ product.name|urlencode }}%20por%20Bs.{{ product.price }}%20del%20menú" 
+                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="product-card">
+            <div class="product-image">🥖</div>
             <div class="product-info">
                 <h3 class="product-title">Panini Mediterráneo</h3>
                 <p class="product-description">
-                    <strong>Ingredientes:</strong> Pan ciabatta, queso feta, tomate seco, 
-                    aceitunas kalamata, rúcula fresca, pesto de albahaca y aceite de oliva extra virgen.
+                    Próximamente disponibles. Estamos preparando nuestros paninis artesanales.
                 </p>
                 <p class="product-price">Especialidad de la casa</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20el%20Panini%20Mediterráneo" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
             </div>
         </div>
-
-        <div class="product-card">
-            <div class="product-image">🇮🇹</div>
-            <div class="product-info">
-                <h3 class="product-title">Panini Italiano Clásico</h3>
-                <p class="product-description">
-                    <strong>Ingredientes:</strong> Prosciutto di Parma, mozzarella di bufala, 
-                    tomate fresco, albahaca, y un toque de aceite de oliva con orégano.
-                </p>
-                <p class="product-price">Sabor auténtico italiano</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20el%20Panini%20Italiano%20Clásico" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">🍗</div>
-            <div class="product-info">
-                <h3 class="product-title">Panini Pollo Gourmet</h3>
-                <p class="product-description">
-                    <strong>Ingredientes:</strong> Pechuga de pollo grillada, queso gouda, 
-                    aguacate, lechuga, tomate y nuestra salsa especial de la casa.
-                </p>
-                <p class="product-price">Opción saludable y deliciosa</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20el%20Panini%20Pollo%20Gourmet" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
 
@@ -146,59 +113,43 @@
     <p class="section-subtitle">Refrescantes y llenas de sabor, preparadas al momento</p>
     
     <div class="products-grid">
+        {% for product in bebidas %}
         <div class="product-card">
-            <div class="product-image">🍯</div>
+            <div class="product-image">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                {% else %}
+                    🍹  <!-- Emoji por defecto -->
+                {% endif %}
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <p class="product-description">
+                    {{ product.description|truncatewords:30 }}
+                </p>
+                <p class="product-price" style="font-weight: bold; color: var(--primary-color);">
+                    Bs. {{ product.price }}
+                </p>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20el%20producto%3A%20{{ product.name|urlencode }}%20por%20Bs.{{ product.price }}%20del%20menú" 
+                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="product-card">
+            <div class="product-image">🍹</div>
             <div class="product-info">
                 <h3 class="product-title">Parchita con Papelón</h3>
                 <p class="product-description">
-                    Refrescante bebida tropical preparada con parchita natural y papelón artesanal. 
-                    Endulzada naturalmente sin conservantes artificiales.
+                    Próximamente disponibles. Estamos preparando nuestras bebidas naturales.
                 </p>
                 <p class="product-price">500ml - Refresco natural</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20la%20Parchita%20con%20Papelón" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
             </div>
         </div>
-
-        <div class="product-card">
-            <div class="product-image">🌺</div>
-            <div class="product-info">
-                <h3 class="product-title">Jamaica con Limón</h3>
-                <p class="product-description">
-                    Infusión natural de flor de jamaica con un toque cítrico de limón fresco. 
-                    Rica en antioxidantes y perfecta para cualquier momento del día.
-                </p>
-                <p class="product-price">500ml - Antioxidante natural</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20la%20Jamaica%20con%20Limón" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">🥕</div>
-            <div class="product-info">
-                <h3 class="product-title">Zanahoria con Naranja</h3>
-                <p class="product-description">
-                    Jugo natural de zanahoria fresca combinado con naranja recién exprimida. 
-                    Lleno de vitaminas A y C para empezar el día con energía.
-                </p>
-                <p class="product-price">500ml - Energía natural</p>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="https://wa.me/+584125951835?text=Hola%20La%20Tablita%2C%20me%20interesa%20el%20jugo%20de%20Zanahoria%20con%20Naranja" 
-                       class="cta-button" style="padding: 0.8rem 2rem; font-size: 0.9rem;" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
 

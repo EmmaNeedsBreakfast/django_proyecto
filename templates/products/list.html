@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Productos</h2>
+    <a href="{% url 'products:product_create' %}" class="btn btn-primary">Crear Producto</a>
+    
+    <div class="row mt-4">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">Bs. {{ product.price }}</p>
+                    <a href="{% url 'products:product_detail' product.pk %}" class="btn btn-info">Ver</a>
+                    <a href="{% url 'products:product_update' product.pk %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'products:product_delete' product.pk %}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
